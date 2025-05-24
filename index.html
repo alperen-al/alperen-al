@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantürk Otel ve Rezarvasyon</title>
+  <meta name="description" content="Online otel rezervasyonu yapın. Hızlı ve kolay bir şekilde oda ayırtın. Güvenli ödeme ve anında onay.">
+  <meta name="keywords" content="otel, otel rezervasyonu, oda ayırt, online otel, otel odası, rezervasyon sistemi, online rezervasyon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      color: #333;
+    }
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    header img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    nav {
+      background-color: #00bcd4;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 15px;
+      font-weight: bold;
+      background-color: #0097a7;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #007c91;
+    }
+    nav.dark {
+      background-color: #263238;
+    }
+    nav.dark a {
+      background-color: #37474f;
+      color: #ffffff;
+    }
+    nav.dark a:hover {
+      background-color: #455a64;
+    }
+    .content {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      background-color: white;
+    }
+    .content.dark {
+      background-color: #1e1e1e;
+    }
+    h1, h2 {
+      color: #006064;
+    }
+    .reservation {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background-color: #e0f2f1;
+      border: 2px solid #80cbc4;
+      border-radius: 10px;
+    }
+    .reservation input, .reservation button {
+      padding: 10px;
+      margin: 8px;
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .reservation button {
+      background-color: #00838f;
+      color: white;
+      font-weight: bold;
+    }
+    .reservation button:hover {
+      background-color: #006064;
+    }
+    #kurucularButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00838f;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    #kurucularButton:hover {
+      background-color: #006064;
+    }
+    #darkModeButton {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #37474f;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+    }
+    #darkModeButton:hover {
+      background-color: #263238;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Karanlık mod butonu -->
+<button id="darkModeButton" onclick="toggleDarkMode()">🌙 Karanlık Mod</button>
+
+<!-- Header -->
+<header>
+  <img src="foto/otel2.jpg" alt="Cantürk Otel">
+</header>
+
+<!-- Navigasyon -->
+<nav id="menu">
+  <a href="1.html">Tek Kişilik</a>
+  <a href="2.html">Çift Kişilik</a>
+  <a href="3.html">Üç Kişilik</a>
+  <a href="4.html">Dört Kişilik</a>
+  <a href="index.html">Hakkımızda</a>
+  <a href="https://www.google.com/maps/place/Ephesia+Holiday+Beach+Club/@37.8144526,27.2674776,17z/data=!3m1!4b1!4m9!3m8!1s0x14beaf5366123537:0x7069b369ffb5b2e0!5m2!4m1!1i2!8m2!3d37.8144484!4d27.2700472!16s%2Fg%2F1tg2g_ll?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank">Yol Tarifi</a>
+  <a href="iletisim.html">İletişim</a>
+</nav>
+
+<!-- Ana içerik -->
+<div class="content" id="icerik">
+  <!-- Dinamik fotoğraf döngüsü -->
+<div style="position: relative; max-width: 100%; text-align: center;">
+    <img id="otelFoto" src="foto/otel.jpg" alt="Otel Fotoğrafı" style="width:100%; max-height:300px; object-fit:cover; border-radius:10px; margin-bottom:20px;">
+  
+    <!-- Sol ok -->
+    <button onclick="geriFoto()" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; font-size:24px; padding:10px; border-radius:50%; cursor:pointer;">←</button>
+  
+    <!-- Sağ ok -->
+    <button onclick="ileriFoto()" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); background-color:rgba(0,0,0,0.5); color:white; border:none; font-size:24px; padding:10px; border-radius:50%; cursor:pointer;">→</button>
+  </div>
+  
+  <h1>Hakkımızda</h1>
+  <p>
+    Cantürk Otel, denize sıfır konumu, 5 yıldızlı hizmeti ve konforlu odaları ile misafirlerine unutulmaz bir tatil deneyimi sunar. 
+    Otelimizde 60’tan fazla oda, geniş açık havuz, kapalı termal havuz, çocuk havuzu ve aqua park mevcuttur. 
+    Her odada maksimum 4 yetişkin konaklayabilir. 2 çocuk ücretsiz, 2 çocuk ise ek ücretle konaklayabilir. 
+  </p>
+
+  <h2>Hizmetler</h2>
+  <ul>
+    <li>Günlük oda temizliği</li>
+    <li>Ücretsiz yüksek hızlı Wi-Fi</li>
+    <li>Minibar</li>
+    <li>Klima</li>
+    <li>7/24 Bar</li>
+    <li>SPA</li>
+    <li>Sauna</li>
+    <li>Türk hamamı</li>
+    <li>Geniş açık büfe restoran</li>
+    <li>Sahil snack bar</li>
+    <li>Havuz etkinlikleri</li>
+    <li>Aquapark</li>
+    <li>Canlı müzik</li>
+    <li>Ödüllü yarışmalar</li>
+    <li>Çocuk kulübü ve oyun parkı</li>
+    <li>Gece eğlenceleri</li>
+    <li>Alkollü içecekler sadece 18 yaş ve üzeri misafirlere verilmektedir</li>
+  </ul>
+
+  <h2 style="margin-top:50px;">Tarihçe ve Kurucumuz</h2>
+  <p>
+    Otelimiz 2003 yılında, vizyoner girişimci <strong>Muhittin Cantürk</strong> tarafından kurulmuştur. 
+    1960 Sivas doğumlu olan Cantürk, çocuk yaşta turizme ilgisini keşfetmiş, genç yaşta otelcilik hayaliyle yola çıkmıştır. 
+    2000’li yıllarda “Misafir memnuniyeti evladır” anlayışı ile kurduğu Cantürk Otel, kısa sürede uluslararası bilinirliğe ulaşmıştır.
+  </p>
+</div>
+
+<!-- Kurucular butonu -->
+<button id="kurucularButton" onclick="kuruculariGoster()">Kurucular</button>
+
+<!-- JavaScript -->
+<script>
+  function kuruculariGoster() {
+    alert(
+      "Proje Kurucuları:\n" +
+      "1. Alperen Korkut - 2210213055\n" +
+      "2. Elif Zehra Ünal - 2210213052\n" +
+      "3. Muhittin Cantürk - 2210213001"
+    );
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    document.getElementById("menu").classList.toggle("dark");
+    document.getElementById("icerik").classList.toggle("dark");
+  }
+  const otelFotolar = [
+    "foto/otel.jpg",
+    "foto/a2.jpg",
+    "foto/a3.jpg",
+    "foto/a4.jpg",
+    "foto/a5.jpg",
+    "foto/a6.jpg",
+    "foto/a7.jpg",  
+    "foto/a8.jpg",
+    "foto/a9.jpg",
+    "foto/a10.jpg",
+    "foto/a.jpg"
+  ];
+
+  let aktifOtelIndex = 0;
+
+  function ileriFoto() {
+    aktifOtelIndex = (aktifOtelIndex + 1) % otelFotolar.length;
+    document.getElementById("otelFoto").src = otelFotolar[aktifOtelIndex];
+  }
+
+  function geriFoto() {
+    aktifOtelIndex = (aktifOtelIndex - 1 + otelFotolar.length) % otelFotolar.length;
+    document.getElementById("otelFoto").src = otelFotolar[aktifOtelIndex];
+  }
+</script>
+
+</body>
+</html>

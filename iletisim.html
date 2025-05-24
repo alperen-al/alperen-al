@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantürk Otel İletişim</title>
+  <meta name="description" content="Cantürk Otel iletişim bilgileri: Instagram, telefon ve e-posta ile ulaşın.">
+  <meta name="keywords" content="cantürk otel, iletişim, telefon, mail, instagram, otel iletişim">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      color: #333;
+    }
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    nav {
+      background-color: #00bcd4;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 10px 15px;
+      font-weight: bold;
+      background-color: #0097a7;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    nav a:hover {
+      background-color: #007c91;
+    }
+    nav.dark {
+      background-color: #263238;
+    }
+    nav.dark a {
+      background-color: #37474f;
+      color: #ffffff;
+    }
+    nav.dark a:hover {
+      background-color: #455a64;
+    }
+    .container {
+      padding: 50px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    h1 {
+      color: #006064;
+    }
+    .contact-btn {
+      display: block;
+      width: 250px;
+      margin: 20px auto;
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #00838f;
+      color: white;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    .contact-btn:hover {
+      background-color: #006064;
+    }
+    #kurucularButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00838f;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    #kurucularButton:hover {
+      background-color: #006064;
+    }
+    #darkModeButton {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #37474f;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+    }
+    #darkModeButton:hover {
+      background-color: #263238;
+    }
+    .insta-options {
+      display: none;
+      margin-top: -10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Karanlık mod butonu -->
+<button id="darkModeButton" onclick="toggleDarkMode()">🌙 Karanlık Mod</button>
+<header>
+    <img src="C:\Users\Alperen\Desktop\codes\project\foto\otel2.jpg" alt="Cantürk Otel">
+</header>
+
+<!-- Üst Navigasyon Menüsü -->
+<nav id="menu">
+  <a href="1.html">Tek Kişilik</a>
+  <a href="2.html">Çift Kişilik</a>
+  <a href="3.html">Üç Kişilik</a>
+  <a href="4.html">Dört Kişilik</a>
+  <a href="index.html">Hakkımızda</a>
+  <a href="https://www.google.com/maps/place/Ephesia+Holiday+Beach+Club/@37.8144526,27.2674776,17z/data=!3m1!4b1!4m9!3m8!1s0x14beaf5366123537:0x7069b369ffb5b2e0!5m2!4m1!1i2!8m2!3d37.8144484!4d27.2700472!16s%2Fg%2F1tg2g_ll?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank">Yol Tarifi</a>
+  <a href="iletisim.html">İletişim</a>
+</nav>
+
+<!-- Ana içerik -->
+<div class="container" id="icerik">
+  <h1>İletişim</h1>
+
+  <!-- Instagram üst buton -->
+  <button class="contact-btn" onclick="toggleInsta()">📷 Instagram</button>
+
+  <!-- Alt hesaplar -->
+  <div class="insta-options" id="instaOptions">
+    <a class="contact-btn" href="https://www.instagram.com/muhittincnt/" target="_blank">📷 Muhittin Cantürk</a>
+    <a class="contact-btn" href="https://www.instagram.com/elifunal1_/" target="_blank">📷 Elif Zehra Ünal</a>
+    <a class="contact-btn" href="https://www.instagram.com/natty.alp/" target="_blank">📷 Alperen Korkut</a>
+  </div>
+
+  <!-- Telefon araması -->
+  <a class="contact-btn" href="tel:+905522604304">☎️ 0552 260 4304</a>
+
+  <!-- Mail gönder -->
+  <a class="contact-btn" href="mailto:canturk2003@hotmail.com">📧 canturk2003@hotmail.com</a>
+
+  <!-- Ulaşım butonu -->
+  <a class="contact-btn" href="https://www.google.com/maps/place/Ephesia+Holiday+Beach+Club/@37.8144526,27.2674776,17z/data=!3m1!4b1!4m9!3m8!1s0x14beaf5366123537:0x7069b369ffb5b2e0!5m2!4m1!1i2!8m2!3d37.8144484!4d27.2700472!16s%2Fg%2F1tg2g_ll?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank">📍 Ulaşım / Yol Tarifi</a>
+</div>
+
+<!-- Kurucular butonu -->
+<button id="kurucularButton" onclick="kuruculariGoster()">Kurucular</button>
+
+<!-- JavaScript -->
+<script>
+  function kuruculariGoster() {
+    alert(
+      "Proje Kurucuları:\\n" +
+      "1. Alperen Korkut - 2210213055\\n" +
+      "2. Elif Zehra Ünal - 2210213052\\n" +
+      "3. Muhittin Cantürk - 2210213001"
+    );
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+    document.getElementById("menu").classList.toggle("dark");
+    document.getElementById("icerik").classList.toggle("dark");
+  }
+
+  function toggleInsta() {
+    const div = document.getElementById("instaOptions");
+    div.style.display = div.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>
+

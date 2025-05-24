@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cantürk Otel - Rezervasyon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      color: #333;
+    }
+    .alert {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      display: none;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    h2 {
+      color: #006064;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .radio-group label {
+      display: block;
+      font-weight: normal;
+    }
+    button {
+      background-color: #00838f;
+      color: white;
+      font-size: 16px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 25px;
+      display: block;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #006064;
+    }
+  </style>
+</head>
+<body>
+<div class="alert" id="alertBox"></div>
+
+<div class="container">
+  <h2>Rezervasyon</h2>
+  <form id="rezForm">
+    <label>Giriş Tarihi</label>
+    <input type="date" name="giris" required>
+    <label>Çıkış Tarihi</label>
+    <input type="date" name="cikis" required>
+
+    <label>Oda Tipi:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="oda" value="1500" required> Tek kişilik (1500TL)</label>
+      <label><input type="radio" name="oda" value="2500"> Çift kişilik (2500TL)</label>
+      <label><input type="radio" name="oda" value="3300"> Üç kişilik (3300TL)</label>
+      <label><input type="radio" name="oda" value="4000"> Dört kişilik (4000TL)</label>
+    </div>
+
+    <label>Kaç çocuk var?</label>
+    <div class="radio-group">
+      <label><input type="radio" name="cocuk" value="0" required> 0 çocuk</label>
+      <label><input type="radio" name="cocuk" value="0"> 1 çocuk</label>
+      <label><input type="radio" name="cocuk" value="0"> 2 çocuk</label>
+      <label><input type="radio" name="cocuk" value="300"> 3 çocuk (+300TL)</label>
+      <label><input type="radio" name="cocuk" value="500"> 4 çocuk (+500TL)</label>
+    </div>
+
+    <label>Ad Soyad</label>
+    <input type="text" name="adsoyad" required>
+    <label>TC</label>
+    <input type="text" name="tc" required>
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <label>Telefon</label>
+    <input type="tel" name="tel" required>
+
+    <label>İptal Garantisi:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="iptal" value="350" required> Evet (+350TL)</label>
+      <label><input type="radio" name="iptal" value="0"> Hayır</label>
+    </div>
+
+    <label>Kart Ad Soyad</label>
+    <input type="text" name="kartad" required>
+    <label>Kart Numara</label>
+    <input type="text" name="kartno" required>
+    <label>SKT</label>
+    <input type="text" name="skt" required>
+    <label>CVV</label>
+    <input type="text" name="cvv" required>
+
+    <button type="submit">Rezervasyonu Tamamla</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("rezForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    const entries = Object.fromEntries(formData.entries());
+
+    // İstenirse hesaplamalar da yapılabilir
+    const oda = parseInt(entries.oda || 0);
+    const cocuk = parseInt(entries.cocuk || 0);
+    const iptal = parseInt(entries.iptal || 0);
+    const giris = new Date(entries.giris);
+    const cikis = new Date(entries.cikis);
+    const gun = Math.max(1, (cikis - giris) / (1000 * 60 * 60 * 24));
+    const toplam = (oda * 2 * gun) + cocuk + iptal;
+
+    const alertBox = document.getElementById("alertBox");
+    alertBox.style.display = "block";
+    alertBox.innerHTML = `Rezervasyon kaydedildi ! Toplam ücret: ${toplam} TL`;
+    alertBox.style.backgroundColor = '#4CAF50';
+
+    // Konsola tüm form verilerini yaz
+    console.log("Form verileri:", entries);
+  });
+</script>
+</body>
+</html>
+
